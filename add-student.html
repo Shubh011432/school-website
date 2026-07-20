@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Student</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f2f2f2;
+}
+
+.container{
+width:500px;
+background:white;
+margin:40px auto;
+padding:25px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,.2);
+}
+
+h2{
+text-align:center;
+color:#0d47a1;
+margin-bottom:20px;
+}
+
+input,select{
+width:100%;
+padding:12px;
+margin:8px 0;
+font-size:16px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+button{
+width:100%;
+padding:12px;
+margin-top:10px;
+font-size:18px;
+background:#1565c0;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#0d47a1;
+}
+
+a{
+text-decoration:none;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Add Student</h2>
+
+<input type="text" id="name" placeholder="Student Name">
+
+<input type="text" id="father" placeholder="Father Name">
+
+<input type="text" id="mother" placeholder="Mother Name">
+
+<select id="className">
+
+<option value="">Select Class</option>
+
+<option>Class 1</option>
+<option>Class 2</option>
+<option>Class 3</option>
+<option>Class 4</option>
+<option>Class 5</option>
+<option>Class 6</option>
+<option>Class 7</option>
+<option>Class 8</option>
+<option>Class 9</option>
+<option>Class 10</option>
+<option>Class 11</option>
+<option>Class 12</option>
+
+</select>
+
+<input type="text" id="mobile" placeholder="Mobile Number">
+
+<input type="text" id="address" placeholder="Address">
+
+<button onclick="saveStudent()">Save Student</button>
+
+<a href="students.html">
+<button type="button">📋 View Students List</button>
+</a>
+
+<a href="admin.html">
+<button type="button">⬅️ Back to Admin Dashboard</button>
+</a>
+
+</div>
+<script>
+
+function saveStudent(){
+
+let student = {
+    name: document.getElementById("name").value,
+    father: document.getElementById("father").value,
+    mother: document.getElementById("mother").value,
+    className: document.getElementById("className").value,
+    mobile: document.getElementById("mobile").value,
+    address: document.getElementById("address").value
+};
+
+if(student.name=="" || student.className==""){
+    alert("Please fill Student Name and Class");
+    return;
+}
+
+let students = JSON.parse(localStorage.getItem("students")) || [];
+
+students.push(student);
+
+localStorage.setItem("students", JSON.stringify(students));
+
+alert("Student Added Successfully");
+
+window.location.href = "students.html";
+
+}
+
+</script>
+
+</body>
+</html>

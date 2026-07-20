@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Students List</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f2f2f2;
+padding:20px;
+}
+
+h2{
+text-align:center;
+color:#0d47a1;
+margin-bottom:20px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+}
+
+th,td{
+border:1px solid #ddd;
+padding:10px;
+text-align:center;
+}
+
+th{
+background:#1565c0;
+color:white;
+}
+
+a{
+text-decoration:none;
+}
+
+button{
+margin-top:20px;
+padding:10px 20px;
+background:#1565c0;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#0d47a1;
+}
+
+</style>
+
+</head>
+<script>
+
+let students = JSON.parse(localStorage.getItem("students")) || [];
+
+let table = document.getElementById("studentTable");
+
+students.forEach(function(student,index){
+
+let row = table.insertRow(-1);
+
+row.insertCell(0).innerHTML = index + 1;
+row.insertCell(1).innerHTML = student.name;
+row.insertCell(2).innerHTML = student.father;
+row.insertCell(3).innerHTML = student.mother;
+row.insertCell(4).innerHTML = student.className;
+row.insertCell(5).innerHTML = student.mobile;
+row.insertCell(6).innerHTML = student.address;
+
+});
+
+</script>
+
+</body>
+<body>
+
+<h2>Students List</h2>
+
+<table id="studentTable">
+
+<tr>
+
+<th>S.No.</th>
+
+<th>Name</th>
+
+<th>Father</th>
+
+<th>Mother</th>
+
+<th>Class</th>
+
+<th>Mobile</th>
+
+<th>Address</th>
+
+</tr>
+
+</table>
+
+<br>
+
+<center>
+
+<a href="add-student.html">
+
+<button>Add New Student</button>
+
+</a>
+
+<a href="admin.html">
+
+<button>Back to Admin</button>
+
+</a>
+
+</center>
